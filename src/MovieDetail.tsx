@@ -2,63 +2,11 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import "./MovieDetails.css";
 import { ArrowLeft, Clock, Star } from "lucide-react";
-
-type Movie = {
-  id: string;
-  original_title: string;
-  poster_path: string;
-  overview: string;
-  year: number;
-  rating: number;
-  runtime: number;
-  score: number;
-  genres: string[];
-};
-
-type MovieDetailJson = {
-  adult: boolean;
-  backdrop_path: string | null;
-  belongs_to_collection: null;
-  budget: number;
-  genres: { id: number; name: string }[];
-  homepage: string;
-  id: string;
-  imdb_id: string;
-  origin_country: string[];
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  production_companies: {
-    id: number;
-    logo_path: string;
-    name: string;
-    origin_country: string;
-  }[];
-  production_countries: {
-    iso_3166_1: string;
-    name: string;
-  }[];
-  release_date: string;
-  revenue: number;
-  runtime: number;
-  spoken_languages: {
-    english_name: string;
-    iso_639_1: string;
-    name: string;
-  }[];
-  status: string;
-  tagline: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
+import type { MovieDeatil, MovieDetailJson } from "./types";
 
 function MovieDetail() {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState<Movie | null>(null);
+  const [movie, setMovie] = useState<MovieDeatil | null>(null);
 
   useEffect(() => {
     const fetchMovieDetail = async () => {

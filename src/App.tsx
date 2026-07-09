@@ -1,29 +1,7 @@
 import { useEffect, useState } from "react";
+import type { Movie, MovieJson } from "./types";
+import MovieCard from "./MovieCard";
 import "./App.css";
-
-type Movie = {
-  id: string;
-  original_title: string;
-  poster_path: string;
-  overview: string;
-};
-
-type MovieJson = {
-  adult: boolean;
-  backdrop_path: string | null;
-  genle_ids: number[];
-  id: string;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: string;
-  poster_path: string | null;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_avarage: number;
-  vote_count: number;
-};
 
 function App() {
   const [keyword, setKeyword] = useState("");
@@ -80,7 +58,10 @@ function App() {
             <div className="hero-section-overview">{heroOverView}</div>
           )}
           <div className="hero-section-actions">
-            <button className="hero-section-btn hero-section-btn-primary">
+            <button
+              className="hero-section-btn hero-section-btn-primary"
+              onClick={() => alert("未実装です")}
+            >
               ▶️ Play
             </button>
             <button className="hero-section-btn hero-section-btn-secondary">
@@ -95,26 +76,7 @@ function App() {
         </h2>
         <div className="movie-row-scroll">
           {movieList.map((movie) => (
-            <a
-              key={movie.id}
-              href={`/movie/${movie.id}`}
-              className="movie-card"
-            >
-              <div className="movie-card__imgwrap">
-                <img
-                  src={
-                    movie.poster_path
-                      ? `https://image.tmdb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`
-                      : "assets/noimage.png"
-                  }
-                  alt={movie.original_title}
-                  className="movie-card__image"
-                />
-                <div className="movie-card__overlay">
-                  <h3 className="movie-card__title">{movie.original_title}</h3>
-                </div>
-              </div>
-            </a>
+            <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
       </section>

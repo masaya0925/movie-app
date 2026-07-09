@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     Component: App,
   },
   {
-    path: "/movie/:movieId",
+    path: "/movies/:movieId",
     Component: MovieDetail,
   },
 ]);
