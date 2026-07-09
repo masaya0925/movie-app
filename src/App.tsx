@@ -80,10 +80,10 @@ function App() {
           ))}
         </div>
       </section>
-      <div className="app-serch-wrap">
+      <div className="app-search-wrap">
         <input
           type="text"
-          className="app-serch"
+          className="app-search"
           placeholder="映画タイトルで検索..."
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
